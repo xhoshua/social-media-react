@@ -4,12 +4,6 @@
       "id": 1,
       "name": "John",
       "lastname": "Wick"
-    },
-    {
-      "name": "Joy",
-      "lastname": "Wicky",
-      "password": "123456",
-      "id": 2
     }
   ],
   "products": [
