@@ -1,0 +1,16 @@
+.nav{
+    background-color:slateblue  !important;
+    width: fit-content;
+}
+
+.page{
+    background-color:slategray;
+    height:769px;
+}
+
+.logIn{
+    background-color: lemonchiffon;
+}
+.Menu-button{
+    color: rgb(29, 6, 22) !important; 
+}
