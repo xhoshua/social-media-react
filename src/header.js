@@ -28,7 +28,7 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: 'center',
   color: theme.palette.text.secondary,
-  backgroundColor:'slateblue'
+  backgroundColor:'black'
 }));
 const options = ['Log out' ];
 export default function Head(){
@@ -59,32 +59,34 @@ export default function Head(){
   };
     return(
         <div>
-          <Grid container >
+          <Grid  >
             <Grid item xs={12} className="header" >
             <Grid item xs container direction="column" >
             <Item  >
       <Box >
-      <BottomNavigation className="nav"
+      <BottomNavigation 
+      style={{display:"flex",justifyContent:"space-between",alignItems:"center", backgroundColor:"transparent"}}
         showLabels
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue);
         }}
       >
-      
-        <BottomNavigationAction className="Home-button" label="Home" icon={<HomeIcon/> }  />
-        <BottomNavigationAction className="Profile-button" label="Profile" icon={<PersonOutlineIcon />} />
-      
+        {/* <Box style={{display:"flex",justifyContent:"space-between",alignItems:"center", backgroundColor:"yellow"}}> */}
+      <Box>
+        <BottomNavigationAction  className="Home-button" label="Home" icon={<HomeIcon  color="secondary"  sx={{ fontSize: 35 }} /> }  />
+        <BottomNavigationAction className="Profile-button" label="Profile" icon={<PersonOutlineIcon color="secondary" sx={{ fontSize: 35 }} />} />
+       </Box>
        
-        <ButtonGroup  ref={anchorRef} aria-label="split button" sx={{ml:210}} >
+        <ButtonGroup  ref={anchorRef} aria-label="split button" >
         <IconButton className="Menu-button"  aria-label="Menu"  
          aria-controls={open ? 'split-button-menu' : undefined}
          aria-expanded={open ? 'true' : undefined}
          aria-label="select merge strategy"
          aria-haspopup="menu"
          onClick={handleToggle}
-        > <MenuIcon /> </IconButton>   
-          </ButtonGroup>     
+        > <MenuIcon color="secondary" sx={{ fontSize: 35 }}  /> </IconButton >   
+          </ButtonGroup>  
           <Popper
         open={open}
         anchorEl={anchorRef.current}

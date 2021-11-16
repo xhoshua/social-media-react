@@ -1,16 +1,45 @@
-.nav{
-    background-color:slateblue  !important;
-    width: fit-content;
-}
+html, body {
+    height: 100%;
+    margin: 0;
+    display:inline;
+    background-color: #bd2e95;
+  }
 
-.page{
-    background-color:slategray;
-    height:769px;
+.nav{
+    background-color:black  !important;
+    width: fit-content;
+      
+
 }
 
 .logIn{
-    background-color: lemonchiffon;
+    background-color: #a37cf0;
 }
 .Menu-button{
     color: rgb(29, 6, 22) !important; 
+}
+
+.Home-button{
+    color: purple !important; 
+}
+.Profile-button{
+    color: purple !important; 
+}
+
+.page-footer{
+    position:fixed;
+    left: 0;
+    bottom: 0;
+  height: auto;
+  width: 100%;
+display: flex;
+
+}
+
+.list-unstyled{
+font-size: 16px !important;
+}
+
+.text-uppercase{
+    justify-content: flex-start;
 }
