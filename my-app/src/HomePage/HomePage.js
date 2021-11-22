@@ -51,7 +51,7 @@ class HomePage extends React.Component {
                  <div class="card">
             <div class="ds-top"></div>
             <div class="avatar-holder">
-              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1820405/profile/profile-512.jpg?1533058950" alt="Albert Einstein" />
+              <img src="http://source.unsplash.com/random/250x250" alt="Profile Pic" />
             </div>
             <div class="name">
               <a href="https://codepen.io/AlbertFeynman/" target="_blank">{user.firstName}</a>

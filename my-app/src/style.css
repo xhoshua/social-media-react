@@ -59,7 +59,7 @@ html, body {
   left: 0;
   width: 300px;
   height: 80px;
-  background: crimson;
+  background: red;
   animation: dsTop 1.5s;
 }
 .card .avatar-holder {
@@ -101,7 +101,7 @@ html, body {
 }
 .card .name a:hover {
   text-decoration: underline;
-  color: crimson;
+  color: red;
 }
 .card .name h6 {
   position: absolute;
@@ -137,7 +137,7 @@ html, body {
 }
 .card .button a:hover {
   color: black;
-  background: crimson;
+  background: red;
 }
 .card .ds-info {
   position: absolute;
@@ -161,7 +161,7 @@ html, body {
 }
 .card .ds-info .pens h6, .card .ds-info .projects h6, .card .ds-info .posts h6 {
   text-transform: uppercase;
-  color: crimson;
+  color: red;
 }
 .card .ds-info .pens p, .card .ds-info .projects p, .card .ds-info .posts p {
   font-size: 12px;
@@ -186,7 +186,7 @@ html, body {
   margin-bottom: 5px;
   font-weight: 700;
   text-transform: uppercase;
-  color: crimson;
+  color: red;
 }
 .card .ds-skill .skill h6 {
   font-weight: 400;
@@ -196,12 +196,12 @@ html, body {
   color: black;
 }
 .card .ds-skill .skill .fab {
-  color: crimson;
+  color: red;
   font-size: 14px;
 }
 .card .ds-skill .skill .bar {
   height: 5px;
-  background: crimson;
+  background: red;
   text-align: right;
 }
 .card .ds-skill .skill .bar p {
@@ -297,5 +297,6 @@ html, body {
 }
 .following {
   color: black;
-  background: crimson;
+  background: red;
 }
+
