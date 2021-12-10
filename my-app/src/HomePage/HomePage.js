@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { userActions } from '../_actions';
+import {configureFakeBackend} from '../_helpers';
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import { faProjectDiagram } from '@fortawesome/free-solid-svg-icons'
@@ -11,6 +12,7 @@ import { faCode } from '@fortawesome/free-solid-svg-icons'
  import { faHtml5 } from '@fortawesome/free-brands-svg-icons'
  import { faCss3 } from '@fortawesome/free-brands-svg-icons'
  import { faJs } from '@fortawesome/free-brands-svg-icons'
+import { users } from '../_reducers/users.reducer';
 
 const target = {
     clicked: 0,
@@ -37,18 +39,68 @@ const target = {
 
 class HomePage extends React.Component {
     componentDidMount() {
+      
         this.props.getUsers();
     }
-
+    test(){
+      console.log(this.users)
+    }
     handleDeleteUser(id) {
         return (e) => this.props.deleteUser(id);
     }
+    handleUpdateUser(id) {
+      return (e) => this.props.updateUser(id);
+  }
 
     render() {
         const { user, users } = this.props;
         return (
+          
             <div className="col-md-6 col-md-offset-3">
-                 <div class="card">
+              {user.username=="admin"? 
+            <div>
+              <h1>Admin</h1>
+              <table>
+            <thead >
+                <tr style={{color:"white"}}>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Last Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody style={{color:"white"}}>
+          
+            {users.loading && <em>Loading users...</em>}
+                {users.error && <span className="text-danger">ERROR: {users.error}</span>}
+                {users.items &&
+                    <>
+                        {users.items.map((user, index) =>
+                              <tr key={user.id}>
+                              <td >{user.id}</td>
+                              <td > {user.firstName}</td>
+                              <td > {user.lastName}</td>
+                              <td > {
+                                    user.deleting ? <em> - Deleting...</em>
+                                    : user.deleteError ? <span className="text-danger"> - ERROR: {user.deleteError}</span>
+                                    : <span> - <a onClick={this.handleDeleteUser(user.id)}>Delete</a></span>
+                                } </td>
+                                 <td > {
+                                    user.updating ? <em> - Updating...</em>
+                                    : user.deleteError ? <span className="text-danger"> - ERROR: {user.updateError}</span>
+                                    : <span> - <a onClick={this.handleUpdateUser(user.id)}>Update</a></span>
+                                } </td>
+                                </tr>
+                          
+                        )}
+                    </>
+    }
+            </tbody>
+        </table>
+              </div>
+            :
+            <div class="card">
+              
             <div class="ds-top"></div>
             <div class="avatar-holder">
               <img src="http://source.unsplash.com/random/250x250" alt="Profile Pic" />
@@ -57,7 +109,8 @@ class HomePage extends React.Component {
               <a href="https://codepen.io/AlbertFeynman/" target="_blank">{user.firstName}</a>
               <h6 title="Followers"><FontAwesomeIcon icon={faUserPlus}/><span class="followers">90</span></h6>
             </div>
-            <div class="button">
+            
+            <div class="button" onClick={this.test()}>
               <a href="#" class="btn" onmousedown="follow();">Follow <FontAwesomeIcon icon={faUserPlus}/></a>
             </div>
             <div class="ds-info">
@@ -96,7 +149,9 @@ class HomePage extends React.Component {
               </div>
             </div>
           </div>
-            </div>
+            
+            }
+             </div>   
         );
     }
 }

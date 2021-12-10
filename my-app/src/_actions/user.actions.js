@@ -6,7 +6,9 @@ import { history } from '../_helpers';
 export const userActions = {
     login,
     logout,
+    // loginA,
     register,
+    update,
     getAll,
     delete: _delete
 };
@@ -28,11 +30,34 @@ function login(username, password) {
             );
     };
 
+
     function request(user) { return { type: userConstants.LOGIN_REQUEST, user } }
     function success(user) { return { type: userConstants.LOGIN_SUCCESS, user } }
     function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
+
+
 }
 
+// function loginA(username, password) {
+//     return dispatch => {
+//         dispatch(request({ username }));
+
+//         userService.loginA(username, password)
+//             .then(
+//                 admin => { 
+//                     dispatch(success(admin));
+//                     history.push('/');
+//                 },
+//                 error => {
+//                     dispatch(failure(error));
+//                     dispatch(alertActions.error(error));
+//                 }
+//             );
+//     };
+//     function request(admin) { return { type: userConstants.LOGIN_REQUEST, admin } }
+//     function success(admin) { return { type: userConstants.LOGIN_SUCCESS, admin } }
+//     function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
+// }
 function logout() {
     userService.logout();
     return { type: userConstants.LOGOUT };
@@ -96,4 +121,22 @@ function _delete(id) {
     function request(id) { return { type: userConstants.DELETE_REQUEST, id } }
     function success(id) { return { type: userConstants.DELETE_SUCCESS, id } }
     function failure(id, error) { return { type: userConstants.DELETE_FAILURE, id, error } }
+}
+function update(id) {
+    return dispatch => {
+dispatch(request(id));
+
+userService.update(id)
+.then(
+    user=>{
+        dispatch(success(id));
+    },
+    error => {
+        dispatch(failure(id,error))
+    }
+);        
+};
+function request(id) { return { type: userConstants.UPDATE_REQUEST, id } }
+    function success(id) { return { type: userConstants.UPDATE_SUCCESS, id } }
+    function failure(id, error) { return { type: userConstants.UPDATE_FAILURE, id, error } }
 }

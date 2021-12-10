@@ -1,5 +1,7 @@
 // array in local storage for registered users
-let users = JSON.parse(localStorage.getItem('users')) || [];
+let users = JSON.parse(localStorage.getItem('users')) ||  [];
+// let admin = JSON.parse(localStorage.getItem('admin')) || [];
+
     
 export function configureFakeBackend() {
     let realFetch = window.fetch;
@@ -7,7 +9,7 @@ export function configureFakeBackend() {
         return new Promise((resolve, reject) => {
             // wrap in timeout to simulate server api call
             setTimeout(() => {
-
+               
                 // authenticate
                 if (url.endsWith('/users/authenticate') && opts.method === 'POST') {
                     // get parameters from post request
@@ -37,6 +39,8 @@ export function configureFakeBackend() {
                     return;
                 }
 
+
+
                 // get users
                 if (url.endsWith('/users') && opts.method === 'GET') {
                     // check for fake auth token in header and return users if valid, this security is implemented server side in a real application
@@ -49,6 +53,19 @@ export function configureFakeBackend() {
 
                     return;
                 }
+                
+
+                // if (url.endsWith('/admin') && opts.method === 'GET') {
+                //     // check for fake auth token in header and return users if valid, this security is implemented server side in a real application
+                //     if (opts.headers && opts.headers.Authorization === 'Bearer fake-jwt-token') {
+                //         resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(admin))});
+                //     } else {
+                //         // return 401 not authorised if token is null or invalid
+                //         reject('Unauthorised');
+                //     }
+
+                //     return;
+                // }                
 
                 // get user by id
                 if (url.match(/\/users\/\d+$/) && opts.method === 'GET') {
@@ -94,7 +111,7 @@ export function configureFakeBackend() {
                 }
 
                 // delete user
-                if (url.match(/\/users\/\d+$/) && opts.method === 'DELETE') {
+                    if (url.match(/\/users\/\d+$/) && opts.method === 'DELETE') {
                     // check for fake auth token in header and return user if valid, this security is implemented server side in a real application
                     if (opts.headers && opts.headers.Authorization === 'Bearer fake-jwt-token') {
                         // find user by id in users array
