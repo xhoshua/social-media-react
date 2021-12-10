@@ -106,11 +106,11 @@ class HomePage extends React.Component {
               <img src="http://source.unsplash.com/random/250x250" alt="Profile Pic" />
             </div>
             <div class="name">
-              <a href="https://codepen.io/AlbertFeynman/" target="_blank">{user.firstName}</a>
+              <h2  target="_blank">{user.firstName}</h2>
               <h6 title="Followers"><FontAwesomeIcon icon={faUserPlus}/><span class="followers">90</span></h6>
             </div>
             
-            <div class="button" onClick={this.test()}>
+            <div class="button" style={{borderColor:"transparent"}} onClick={this.test()}>
               <a href="#" class="btn" onmousedown="follow();">Follow <FontAwesomeIcon icon={faUserPlus}/></a>
             </div>
             <div class="ds-info">
